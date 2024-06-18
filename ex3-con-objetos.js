@@ -296,16 +296,29 @@ const flightReservations = [
 ];
 
 // Usa el método forEach para iterar por cada uno de los vuelos y mostrarlos por consola
+flightReservations.forEach(flight => console.log(flight.flightNumber))
 
 // Usa el método forEach para mostrar UNICAMENTE el pasajero de cada uno de lo vuelos
+flightReservations.forEach(flight => console.log('Passenger: ', flight.passenger.firstName));
 
 // USa el método find para encontrar el vuelo número 'AA456'. Luego, muestra por consola el precio total de este vuelo
+const flightAA456 = flightReservations.find(reservation => reservation.flightNumber == "AA456");
+console.log('Flight AA456 total Price: ',flightAA456.totalPrice);
 
 // Usa el método find para encontrar el vuelo que ha reservado el señor bob.johnson@example.com. Muestra el objeto entero
+const bobFlight = flightReservations.find(reservation => reservation.passenger.contactInfo.email == "bob.johnson@example.com");
+console.log("Bob's flight: ", bobFlight);
 
 // Usa el método some para averiguar si algún vuelo tiene como destino el aeropuerto de LPA GRAN CANARIA
+const isThereFlightToCanaria = flightReservations.some(reservation => reservation.arrival.airport == "LPA GRAN CANARIA");
+console.log("Are there flights to Gran Canaria? ", isThereFlightToCanaria)
+const flightsToGranCanaria = flightReservations.filter(reservation => reservation.arrival.airport.includes('Canaria'))
+
+console.log('flights to Gran Canaria: ', flightsToGranCanaria)
 
 // Usa el método every para comprobar si todos los vuelos están confirmados (isConfirmed)
+const isConfirmed = flightReservations.every(reservation => reservation.isConfirmed == true)
+console.log('All flights confirmed: ', isConfirmed)
 
 // Usa el método filter para obtener todos los vuelos que tienen la puerta de embarque 'D5'
 
