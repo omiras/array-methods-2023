@@ -321,9 +321,23 @@ const isConfirmed = flightReservations.every(reservation => reservation.isConfir
 console.log('All flights confirmed: ', isConfirmed)
 
 // Usa el método filter para obtener todos los vuelos que tienen la puerta de embarque 'D5'
+const doorD5 = flightReservations.filter(reservation => reservation.gate == "D5");
+console.log('D5 gate flights: ', doorD5)
 
 // Usa el método filter para obtener todos los vuelos que incluyen menús con comida Vegan. BONUS: Muestra por consola el nombre de la aerolínea
+const veganFood = flightReservations.filter(reservation => reservation.specialMeals.includes('Vegan'));
+console.log(veganFood)
+veganFood.forEach(flight => console.log('Company with vegan food option: ', flight.airline))
 
 // Usa el método map para convertir cada objeto en un string con el formato 'numero de vuelo'-'compañía area'´Ejemplo : "AA456-American Airlines"
 
+const flightAirlineStr = flightReservations.map(reservation => `${reservation.flightNumber}-${reservation.airline}`);
+console.log('flight airline string: ', flightAirlineStr);
+
 // DIFICIL. USA el método reduce para sumar el conjunto total de puntos obtenidos de loyalyProgram de todos los tickets
+
+const sumPoints = flightReservations.reduce((accumulator, currentValue)=> {
+return accumulator + currentValue.loyaltyProgram.points
+}, 0)
+
+console.log('sum points: ', sumPoints)
