@@ -10,7 +10,11 @@
  * @returns {array} Devuelve un array de numbers 
  */
 function toNumberArray(stringarray) {
+    console.log(stringarray)
+    const numberArr = stringarray.map(element => Number(element))
+    return numberArr;
 }
+
 
 // Caso de prueba 1: Números enteros en forma de strings
 const testCase1 = ["1", "2", "3", "4", "5"];
